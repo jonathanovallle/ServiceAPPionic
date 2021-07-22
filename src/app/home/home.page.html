@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Mis Servicios
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="navigate" (click)="navigateToCreateService()">
+        <ion-icon  size="large" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="data === 0;"> <ion-text color="primary">
+        <h1 class="ion-text-center">No hay servicios</h1>
+      </ion-text>
+  </div>
+  <ion-list >
+    <ion-item *ngFor="let item of data; let i = index;">
+      <ion-label>{{data[i].titulo}}</ion-label>
+      <div>
+        <ion-label class="precioyunidad">{{data[i].precio}} €</ion-label>
+        <ion-label class="precioyunidad">Por {{data[i].unidad}}</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

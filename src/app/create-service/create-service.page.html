@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Servicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="orderForm" (ngSubmit)="submitForm()" id="form" novalidate>
+   
+    <ion-row class="ion-margin-top" formArrayName="items"
+    *ngFor="let item of orderForm.get('items')['controls']; let i = index;">
+    <div [formGroupName]="i">
+      <ion-col><ion-label >Titulo</ion-label>
+        <ion-item>
+          <ion-input required placeholder="titulo del productos" formControlName="titulo" name="titulo"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && item.titulo">
+         Titulo es obligatorio
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && item.titulo">
+          Maximo 20 caracteres
+        </span>
+      </ion-col>
+
+      <ion-col>
+        <ion-label position="stacked">Precio</ion-label>
+        <ion-item>
+          <ion-input type="number" required placeholder="12.33" formControlName="precio"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && item.titulo">
+          Precio obligatorio
+         </span>
+         <span class="error ion-padding" *ngIf="isSubmitted && item.titulo">
+          Precio maximo 2 decimales
+         </span>
+      </ion-col>
+
+      <ion-col>
+        <ion-label position="stacked">Unidad</ion-label>
+        <ion-item>
+          <ion-select placeholder="Selecciona uno" required formControlName="unidad">
+            <ion-select-option value="metro">metro</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && item.titulo">
+          Unidad obligatoria
+         </span>
+      </ion-col>
+    </div>
+    </ion-row>
+  <ion-label>Button</ion-label>
+  <ion-button expand="full" (click)="addItem()">
+    <ion-icon slot="start" name="add-outline"></ion-icon>
+    Añadir otro servicio</ion-button>
+    
+  </form>
+</ion-content>
+<ion-footer class="ion-text-center">
+  <form [formGroup]="orderForm" (submit)="submitForm()" novalidate>
+      <ion-button  shape="round" type="submit">
+        Guardar Servicio
+      </ion-button>
+    </form>
+</ion-footer>
+

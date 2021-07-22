@@ -1,0 +1,23 @@
+
+    <ion-row class="ion-margin-top "> 
+      <ion-col><ion-label >Titulo</ion-label>
+        <ion-item>
+          <ion-input required placeholder="titulo del productos" formControlName="titulo"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-label position="stacked">Precio</ion-label>
+        <ion-item>
+          <ion-input type="number" required placeholder="12.33" formControlName="precio"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-label position="stacked">Unidad</ion-label>
+        <ion-item>
+          <ion-select placeholder="Selecciona uno" required formControlName="unidad">
+            <ion-select-option value="metro">metro</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
